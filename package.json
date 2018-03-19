@@ -1,0 +1,10 @@
+{
+  "name": "lions",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "'nunezrip' <'pnunez@techlaunch.io'>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
