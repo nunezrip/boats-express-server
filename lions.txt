@@ -1,7 +1,7 @@
 LIONS API
 
 {
-  name: string'
+  name: string,
   age: number,
   pride: string,
   gender: string,
@@ -11,33 +11,83 @@ LIONS API
 1) '/lions', GET, Serve back the lions collection
 2) '/lions/:id', GET, Serve back one lion identified by the id
 3) '/lions', POST, Create a new lion 
-4) '/lions/:id', PUT, Update and existing lion in our db
-5) '/lions/:id', DELETE, Deletre a lion from our db
+4) '/lions/:id', PUT, Update an existing lion in our db
+5) '/lions/:id', DELETE, Delete a lion from our db
 
 {
-  "GET /lions":{
+  "GET /lions": {
     "desc": "returns all items",
     "response": "200 application/json",
     "data": "[{}, {}, {}]"
   },
-   "GET /lions/:id":{
+   "GET /lions/:id": {
     "desc": "returns one lion identified by its id",
     "response": "200 application/json",
     "data": "{}"
   },
-   "POST /lions":{
+   "POST /lions": {
     "desc": "create and return a new lion",
     "response": "201 application/json",
     "data": "{}"
   },
-     "PUT /lions/:id":{
+     "PUT /lions/:id": {
     "desc": "update and return the matching lion based on the id",
     "response": "200 application/json",
     "data": "{}"
   },
-   "DELETE /lions/:id":{
+   "DELETE /lions/:id": {
     "desc": "delete and return a matching lion",
     "response": "200 application/json",
     "data": "{}"
   },
+}
+
+BOAT API
+
+{
+  name: string
+  engines: number,
+  hp: number;
+  size: number;
+  id: string
+}
+
+
+1) '/boats', GET Serve back the boats collection
+2) '/boats/:id', GET, Serve back one boat identified by the id
+3) '/boats', POST, Create a new boat
+4) '/boats/:id', PUT, Update an existing boat in our db
+5)'lions/id:', DELETE, Delete a boat from our db
+
+
+"GET /boats": {
+  "desc": "returns all items",
+  "response": "200 application/json",
+  "data:: "[{}, {}, {}]"
+},
+
+"GET /boats/id": {
+"desc": "returns one boat identified by its id",
+"response": "200 aplication/json",
+"data": "{}"
+},
+
+"POST /boats": {
+  "desc": "create and return a new boat",
+  "response": "201 application/json",
+  "data": "{}"
+},
+
+"PUT /boats/id": {
+  "desc": "update and return the matching boat based on the id",
+  "response": "200 application/json",
+  "data": "{}"
+},
+
+"DELETE /boats/id": {
+  "desc": "delete and return a matching boat",
+  "response": "200 application/json",
+  "data": "{}"
+},
+
 }
