@@ -1,6 +1,4 @@
 var express = require('express');
-var bodyParser = require('body-parser');
-var _ = require('lodash');
 var morgan = require('morgan');
 
 var app = express();
@@ -20,8 +18,8 @@ var updateId = function(req, res, next) {
 // Global middleware
 app.use(morgan('dev'));
 app.use(express.static('client'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use((err, req, res, next) => {
 	if (err) {
 		res.status(500).send(error);
@@ -29,7 +27,8 @@ app.use((err, req, res, next) => {
 });
 
 app.param('id', function(req, res, next, id) {
-	var boat = _.find(boats, { id: id });
+	var boat = boats.find(boat => boat.id == id);
+
 	if (boat) {
 		req.boat = boat;
 		next();
@@ -64,11 +63,11 @@ app.put('/boats/:id', (req, res) => {
 	if (update.id) {
 		delete update.id;
 	}
-	var boat = _.findIndex(boats, { id: req.params.id });
+	var boat = boats.findIndex(boat => boat.id == req.params.id);
 	if (!boats[boat]) {
 		res.send();
 	} else {
-		var updateBoat = _.assign(boat[boat], update);
+		var updateBoat = Object.assign({}, boat[boat], update);
 		res.json(updateBoat);
 	}
 });
