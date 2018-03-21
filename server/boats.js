@@ -5,10 +5,11 @@ var morgan = require('morgan');
 
 var app = express();
 
-var boat = [];
+var boats = [];
 var id = 0;
 
-var updateId = function(req, req, next) {
+var updateId = function(req, res, next) {
+	console.log(req.body);
 	if (!req.body.id) {
 		id++;
 		req.body.id = id + '';
@@ -46,6 +47,7 @@ app.get('/boats', (req, res) => {
 
 //GET a boat record by its ID
 app.get('/boats/:id', (req, res) => {
+	var boat = req.boat;
 	res.json(boat || {});
 });
 
