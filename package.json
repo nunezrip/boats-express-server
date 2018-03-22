@@ -1,11 +1,19 @@
 {
-  "name": "lions",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "'nunezrip' <'pnunez@techlaunch.io'>",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.16.3",
-    "morgan": "^1.9.0"
-  }
+	"name": "lions",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "'nunezrip' <'pnunez@techlaunch.io'>",
+	"license": "MIT",
+	"scripts": {
+		"start": "nodemon index.js",
+		"test": "mocha server/spec.js"
+	},
+	"dependencies": {
+		"express": "^4.16.3",
+		"morgan": "^1.9.0"
+	},
+	"devDependencies": {
+		"chai": "^4.1.2",
+		"supertest": "^3.0.0"
+	}
 }
