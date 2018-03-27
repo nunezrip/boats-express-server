@@ -1,26 +1,28 @@
 var lionRouter = require('express').Router();
 
-var lions = [];
-var id = 0;
+const Lion = require('../models/lions');
 
-var updateId = function(req, res, next) {
-	if (!req.body.id) {
-		id++;
-		req.body.id = id + '';
-	}
-	next();
-};
+// var lions = [];
+// var id = 0;
 
-lionRouter.param('id', function(req, res, next, id) {
-	var lion = lions.find(lions => lion.id == id);
+// var updateId = function(req, res, next) {
+// 	if (!req.body.id) {
+// 		id++;
+// 		req.body.id = id + '';
+// 	}
+// 	next();
+// };
 
-	if (lion) {
-		req.lion = lion;
-		next();
-	} else {
-		res.send();
-	}
-});
+// lionRouter.param('id', function(req, res, next, id) {
+// 	var lion = lions.find(lions => lion.id == id);
+
+// 	if (lion) {
+// 		req.lion = lion;
+// 		next();
+// 	} else {
+// 		res.send();
+// 	}
+// });
 
 // routes
 lionRouter.get('/', (req, res) => {
