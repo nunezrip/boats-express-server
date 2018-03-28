@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-mongoose.connect('mongodb://lionsDB:CHANgua@ds123929.mlab.com:23929/lions');
+mongoose.connect('mongodb://lionDB:CHANgua@ds123929.mlab.com:23929/lions');
 
 var lionRouter = require('./lions');
 
@@ -19,7 +19,7 @@ app.use('/lions', lionRouter);
 
 app.use((err, req, res, next) => {
 	if (err) {
-		res.status(500).send(error);
+		res.status(500).send(err);
 	}
 });
 

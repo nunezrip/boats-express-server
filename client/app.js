@@ -1,4 +1,4 @@
-import { stringify } from 'querystring';
+// import { stringify } from 'querystring';
 
 function ready(fn) {
 	if (document.readyState != 'loading') {
