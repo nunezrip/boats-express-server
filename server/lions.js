@@ -64,29 +64,39 @@ lionRouter.post('/', (req, res) => {
 });
 
 lionRouter.put('/id:', (req, res) => {
-	var update = req.body;
-	if (update.id) {
-		delete update.id;
+Lion.findById(releaseEvents.params.id, (err, lion) => {
+	if(err) {
+		res.send(err);
+	}
+	if(req.body.name){
+		lion.name = req.body.name;
+	}
+	if(req.body.age){
+		lion.age = req.body.age;
+	}
+	if(req.body.pride){
+		lion.pride = req.body.pride;
+	}
+	if(req.body.gender){
+		lion.gender = req.body.gender;
 	}
 
-	var lion = _.findIndex(lions, { id: req.params.id });
-	if (!lions[lion]) {
-		res.send();
-	} else {
-		var updatedLion = Object.assign({}, lion[lion], update);
-		res.json(updatedLion);
-	}
+	lion.save(err => {
+		if(err){
+			res.send(err);
+		}
+		res.json({message: 'Update the lion'});
+	});
+});
 });
 
-lionRouter.delete('/id:', (req, res) => {
-	var lion = lions.findIndex(lions => lion.id == req.params.id);
-	if (!lions[lion]) {
-		res.send();
-	} else {
-		var deletedLion = lions[lion];
-		lions.splice(lion, 1);
-		res.json(deletedLion);
-	}
+lionRouter.delete('/:id', (req,res) => {
+	Lion.remove({_id:req.params.id}, (err, lion) => {
+		if(err) {
+			res.send(err);
+		}
+		res.json({message: 'Deleted the lion'});
+	});
 });
 
 module.exports = lionRouter;
